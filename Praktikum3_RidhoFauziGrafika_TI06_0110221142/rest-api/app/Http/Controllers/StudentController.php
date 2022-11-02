@@ -25,72 +25,52 @@ class StudentController extends Controller
 
     public function store(Request $request)
     {
-        $validator = Validator::make($request->all(), [
-            'nama' => 'required|string',
-            'nim' => 'required|string|unique:students',
-            'email' => 'required|email',
-            'jurusan' => 'required'
-        ]);
+        $input = [
+            'nama' => $request->nama,
+            'nim' => $request->nim,
+            'email' => $request->email,
+            'jurusan' => $request->jurusan
+        ];
 
-        if ($validator->fails()) {
-            return response()->json($validator->errors(), 401);
-        }
+        $student = Student::create($input);
+        $data = [
+            'message' => 'Student created successfully',
+            'data' => $student
+        ];
 
-        try {
-            $students = Student::create($request->all());
-            $response = [
-                'message' => 'Student Created',
-                'data' => $students
-            ];
-            return response()->json($response, 201);
-        } catch (QueryException $e) {
-            return response()->json([
-                'message' => 'Student Created Failded ' . $e->errorInfo
-            ]);
-        }
+        return response()->json($data, 201);
     }
 
     public function update(Request $request, $id)
     {
-        $students = Student::findOrFail($id);
-        $validator = Validator::make($request->all(), [
-            'nama' => 'required|string',
-            'nim' => 'required|string|unique:students',
-            'email' => 'required|email',
-            'jurusan' => 'required'
-        ]);
+        $input = [
+            'nama' => $request->nama,
+            'nim' => $request->nim,
+            'email' => $request->email,
+            'jurusan' => $request->jurusan
+        ];
 
-        if ($validator->fails()) {
-            return response()->json($validator->errors(), 401);
-        }
+        Student::find($id)->update($input);
+        $student = Student::find($id);
 
-        try {
-            $students->update($request->all());
-            $response = [
-                'message' => 'Student Updated',
-                'data' => $students
-            ];
-            return response()->json($response, 200);
-        } catch (QueryException $e) {
-            return response()->json([
-                'message' => 'Student Updated Failded ' . $e->errorInfo
-            ]);
-        }
+        $data = [
+            'message' => 'Student updated seccessfully',
+            'data' => $student,
+        ];
+
+        return response()->json($data, 200);
     }
 
     public function destroy($id)
     {
-        $students = Student::findOrFail($id);
-        try {
-            $students->delete();
-            $response = [
-                'message' => 'Student Deleted'
-            ];
-            return response()->json($response, 200);
-        } catch (QueryException $e) {
-            return response()->json([
-                'message' => 'Student deleted Failded ' . $e->errorInfo
-            ]);
-        }
+        Student::destroy($id);
+        $students = Student::all();
+
+        $data = [
+            'message' => 'Student deleted successfully',
+            'data' => $students
+        ];
+
+        return response()->json($data, 200);
     }
 }
