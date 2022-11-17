@@ -196,7 +196,7 @@ class PatientController extends Controller
     }
 
     // membuat fitur positif untuk menampilkan pasien yang positif
-    public function positive($status)
+    public function positive()
     {
 
         // mengunakan model pasien untuk mencari status
@@ -214,7 +214,7 @@ class PatientController extends Controller
     }
 
     // membuat fitur recovered untuk menampilkan pasien yang sembuh
-    public function recovered($status)
+    public function recovered()
     {
 
         // mengunakan model pasien untuk mencari status
@@ -232,7 +232,7 @@ class PatientController extends Controller
     }
 
     // membuat fitur dead untuk menampilkan pasien yang meninggal
-    public function dead($status)
+    public function dead()
     {
 
         // mengunakan model pasien untuk mencari status
