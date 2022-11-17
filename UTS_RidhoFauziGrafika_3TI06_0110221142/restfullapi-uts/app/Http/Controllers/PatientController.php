@@ -200,11 +200,12 @@ class PatientController extends Controller
     {
 
         // mengunakan model pasien untuk mencari status
-        $patient = Patient::where('status', 'LIKE', '%' . $status . '%')->get();
+        $patient = Patient::where('status', 'positive')->get();
 
         // membuat response jika data berhasil ditemukan
         $data = [
             'message' => 'Get positive resource',
+            'total' => count($patient),
             'data' => $patient
         ];
 
@@ -217,11 +218,12 @@ class PatientController extends Controller
     {
 
         // mengunakan model pasien untuk mencari status
-        $patient = Patient::where('status', 'LIKE', '%' . $status . '%')->get();
+        $patient = Patient::where('status', 'recovered')->get();
 
         // membuat response jika data berhasil ditemukan
         $data = [
             'message' => 'Get recovered resource',
+            'total' => count($patient),
             'data' => $patient
         ];
 
@@ -234,11 +236,12 @@ class PatientController extends Controller
     {
 
         // mengunakan model pasien untuk mencari status
-        $patient = Patient::where('status', 'LIKE', '%' . $status . '%')->get();
+        $patient = Patient::where('status', 'dead')->get();
 
         // membuat response jika data berhasil ditemukan
         $data = [
             'message' => 'Get dead resource',
+            'total' => count($patient),
             'data' => $patient
         ];
 
