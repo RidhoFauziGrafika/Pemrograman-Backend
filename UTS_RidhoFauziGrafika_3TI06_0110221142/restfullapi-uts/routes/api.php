@@ -41,13 +41,13 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::get('patients/search/{name}', [PatientController::class, 'search']);
 
     // method positive untuk menampilkan data pasien yang positive
-    Route::get('patients/status/{status}', [PatientController::class, 'positive']);
+    Route::get('patients/status/positive', [PatientController::class, 'positive']);
 
     // method recovered untuk menampilkan data pasien yang sembuh
-    Route::get('patients/status/{status}', [PatientController::class, 'recovered']);
+    Route::get('patients/status/recovered', [PatientController::class, 'recovered']);
 
     // method dead untuk menampilkan data pasien yang meninggal
-    Route::get('patients/status/{status}', [PatientController::class, 'dead']);
+    Route::get('patients/status/dead', [PatientController::class, 'dead']);
 });
 
 
