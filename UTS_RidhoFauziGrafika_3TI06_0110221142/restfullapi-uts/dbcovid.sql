@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 17 Nov 2022 pada 06.23
+-- Waktu pembuatan: 17 Nov 2022 pada 16.58
 -- Versi server: 10.4.22-MariaDB
 -- Versi PHP: 8.1.2
 
@@ -95,10 +95,9 @@ CREATE TABLE `patients` (
 --
 
 INSERT INTO `patients` (`id`, `name`, `phone`, `address`, `status`, `in_date_at`, `out_date_at`, `created_at`, `updated_at`) VALUES
-(1, 'Banu Ridwan', '082284346090', 'Depok, Jawa Barat', 'Sembuh', '2022-11-14', '2022-11-20', '2022-11-14 06:04:36', '2022-11-15 06:25:09'),
-(2, 'Ahmad Fauzi', '082284435544', 'Bekasi, Jawa Barat', 'Positif', '2022-11-14', '2022-11-20', '2022-11-14 06:05:18', '2022-11-15 06:28:06'),
-(4, 'Ahmad Maulana', '082284437895', 'Bandung, Jawa Barat', 'Meninggal', '2022-11-14', '2022-11-20', '2022-11-14 07:50:54', '2022-11-16 10:42:05'),
-(5, 'Banu Ahmad', '082284430622', 'Depok, Jawa Barat', 'Positif', '2022-11-14', '2022-11-20', '2022-11-15 06:24:08', '2022-11-15 06:24:08');
+(1, 'Banu Ridwan', '082284346090', 'Depok, Jawa Barat', 'recovered', '2022-11-14', '2022-11-20', '2022-11-14 06:04:36', '2022-11-17 08:44:36'),
+(2, 'Ahmad Fauzi', '082284435544', 'Bekasi, Jawa Barat', 'positive', '2022-11-14', '2022-11-20', '2022-11-14 06:05:18', '2022-11-17 08:45:56'),
+(4, 'Ahmad Maulana', '082284437895', 'Bandung, Jawa Barat', 'dead', '2022-11-14', '2022-11-20', '2022-11-14 07:50:54', '2022-11-17 08:46:43');
 
 -- --------------------------------------------------------
 
@@ -125,7 +124,9 @@ CREATE TABLE `personal_access_tokens` (
 
 INSERT INTO `personal_access_tokens` (`id`, `tokenable_type`, `tokenable_id`, `name`, `token`, `abilities`, `last_used_at`, `expires_at`, `created_at`, `updated_at`) VALUES
 (1, 'App\\Models\\User', 2, 'auth_token', '957dad3b68b8f3c5a90d5af636830f05910ecc2aef66376b55a1865ade380b84', '[\"*\"]', '2022-11-15 09:32:00', NULL, '2022-11-15 09:25:39', '2022-11-15 09:32:00'),
-(2, 'App\\Models\\User', 9, 'auth_token', '163111673f51fa76600a04d71d09ef09bcb894f4807fd51954ea9ef864a743e7', '[\"*\"]', '2022-11-16 10:47:38', NULL, '2022-11-16 10:25:44', '2022-11-16 10:47:38');
+(2, 'App\\Models\\User', 9, 'auth_token', '163111673f51fa76600a04d71d09ef09bcb894f4807fd51954ea9ef864a743e7', '[\"*\"]', '2022-11-17 08:48:27', NULL, '2022-11-16 10:25:44', '2022-11-17 08:48:27'),
+(3, 'App\\Models\\User', 9, 'auth_token', '0f992eaa7c57a701ec5070eebbe50ce2ec12dcb738477ec990c63b50d0893f21', '[\"*\"]', '2022-11-17 08:46:58', NULL, '2022-11-17 06:42:14', '2022-11-17 08:46:58'),
+(4, 'App\\Models\\User', 10, 'auth_token', '6a991728124b111f285ab2a12464c1cb69d7ea94eeb6de920bc8d390d31d3557', '[\"*\"]', NULL, NULL, '2022-11-17 07:01:47', '2022-11-17 07:01:47');
 
 -- --------------------------------------------------------
 
@@ -150,7 +151,8 @@ CREATE TABLE `users` (
 
 INSERT INTO `users` (`id`, `name`, `email`, `email_verified_at`, `password`, `remember_token`, `created_at`, `updated_at`) VALUES
 (2, 'Ridho Fauzi', 'ridhofauzi@gmail.com', NULL, '$2y$10$zGvgZuWNfAe8uEIyBDIEBe8CeTrN445kSP42TLL9pIWknjT1uwCWi', NULL, '2022-11-15 08:31:55', '2022-11-15 08:31:55'),
-(9, 'banu', 'banu@gmail.com', NULL, '$2y$10$8aAhRkGcmt17VIgZjn9QwunoqEgOC1y9ResLuubT.5iokJR5w2sVW', NULL, '2022-11-16 10:24:43', '2022-11-16 10:24:43');
+(9, 'banu', 'banu@gmail.com', NULL, '$2y$10$8aAhRkGcmt17VIgZjn9QwunoqEgOC1y9ResLuubT.5iokJR5w2sVW', NULL, '2022-11-16 10:24:43', '2022-11-16 10:24:43'),
+(10, 'ridwan', 'ridwan@gmail.com', NULL, '$2y$10$gzDUCsucfISceNg3dDvVjeb.d1OV/y0j0N4Ebfsg7A0SlRHVnmxs6', NULL, '2022-11-17 07:00:15', '2022-11-17 07:00:15');
 
 --
 -- Indexes for dumped tables
@@ -216,19 +218,19 @@ ALTER TABLE `migrations`
 -- AUTO_INCREMENT untuk tabel `patients`
 --
 ALTER TABLE `patients`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT untuk tabel `personal_access_tokens`
 --
 ALTER TABLE `personal_access_tokens`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT untuk tabel `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

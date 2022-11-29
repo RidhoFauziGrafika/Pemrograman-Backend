@@ -196,15 +196,16 @@ class PatientController extends Controller
     }
 
     // membuat fitur positif untuk menampilkan pasien yang positif
-    public function positive($status)
+    public function positive()
     {
 
         // mengunakan model pasien untuk mencari status
-        $patient = Patient::where('status', 'LIKE', '%' . $status . '%')->get();
+        $patient = Patient::where('status', 'positive')->get();
 
         // membuat response jika data berhasil ditemukan
         $data = [
             'message' => 'Get positive resource',
+            'total' => count($patient),
             'data' => $patient
         ];
 
@@ -213,15 +214,16 @@ class PatientController extends Controller
     }
 
     // membuat fitur recovered untuk menampilkan pasien yang sembuh
-    public function recovered($status)
+    public function recovered()
     {
 
         // mengunakan model pasien untuk mencari status
-        $patient = Patient::where('status', 'LIKE', '%' . $status . '%')->get();
+        $patient = Patient::where('status', 'recovered')->get();
 
         // membuat response jika data berhasil ditemukan
         $data = [
             'message' => 'Get recovered resource',
+            'total' => count($patient),
             'data' => $patient
         ];
 
@@ -230,15 +232,16 @@ class PatientController extends Controller
     }
 
     // membuat fitur dead untuk menampilkan pasien yang meninggal
-    public function dead($status)
+    public function dead()
     {
 
         // mengunakan model pasien untuk mencari status
-        $patient = Patient::where('status', 'LIKE', '%' . $status . '%')->get();
+        $patient = Patient::where('status', 'dead')->get();
 
         // membuat response jika data berhasil ditemukan
         $data = [
             'message' => 'Get dead resource',
+            'total' => count($patient),
             'data' => $patient
         ];
 
