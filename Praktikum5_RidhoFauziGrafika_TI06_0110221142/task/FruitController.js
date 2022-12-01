@@ -8,7 +8,7 @@ const index = () => {
     }
 };
 
-function store (name){
+const store = (name) => {
     fruits.push(name);
     console.log(`\nMethod Store - Menambahkan buah ${name}`);
     index();
@@ -16,13 +16,13 @@ function store (name){
 
 // membuat fungsi update dan destroy
 
-function update(position, name){
+const update = (position, name) => {
     fruits[position] = name;
     console.log(`\nMethod Update - Update data ${position} menjadi ${name}`);
     index();
 }
 
-function destroy(position){
+const destroy = (position) => {
     fruits.splice(position,1);
     console.log(`\nMethod Destroy - menghapus data ${position}`);
     index();
