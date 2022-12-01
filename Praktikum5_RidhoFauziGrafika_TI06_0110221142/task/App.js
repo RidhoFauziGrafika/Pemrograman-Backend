@@ -3,18 +3,18 @@
     melakukan teknik destructing object
 */
 
-const {index, store, update, destroy} = require("./FruitController.js");
+let {index, store, update, destroy} = require("./FruitController.js");
 
 // membuat fungsi utama : main
 const main = () => {
+    // menampilkan seluruh data 
     console.log("Method Index - Menampilkan Buah");
-    // menampilkan seluruh data
     index();
-    // menambahkan
+    // menambahkan data
     store("Pisang");
-    // update
+    // update data
     update(0, "Kelapa");
-    // menghapus
+    // menghapus data
     destroy(0);
 
 

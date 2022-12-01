@@ -1,5 +1,5 @@
 // mengimport data fruits menggunakan require
-const fruits = require("./data.js");
+let fruits = require("./Fruits.js");
 
 // membuat fungsi index dan store
 const index = () => {
@@ -8,7 +8,7 @@ const index = () => {
     }
 };
 
-const store = (name) => {
+function store (name){
     fruits.push(name);
     console.log(`\nMethod Store - Menambahkan buah ${name}`);
     index();
@@ -16,13 +16,13 @@ const store = (name) => {
 
 // membuat fungsi update dan destroy
 
-const update = (position, name) => {
+function update(position, name){
     fruits[position] = name;
     console.log(`\nMethod Update - Update data ${position} menjadi ${name}`);
     index();
 }
 
-const destroy = (position) => {
+function destroy(position){
     fruits.splice(position,1);
     console.log(`\nMethod Destroy - menghapus data ${position}`);
     index();
